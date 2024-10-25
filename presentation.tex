@@ -1,13 +1,111 @@
+
 \documentclass{beamer}
+\usepackage{multicol}
+\usepackage{braket}
+\usepackage{tikzit}
+\input{zx-calculus.tikzstyles}
+\usepackage{tikz}
+
+
 \usetheme{metropolis}           % Use metropolis theme
-\title{A minimal example}
-\date{\today}
-\author{Matthias Vogelgesang}
-\institute{Centre for Modern Beamer Themes}
+\title{Reconfiguring staggerd quantum walks with ZX}
+\date{November 5, 2024}
+\author{Bruno Jardim \and Jaime Santos \and Luís Soares Barbosa}
+\institute{HASLab - INESCTEC}
 \begin{document}
-  \maketitle
-  \section{First Section}
-  \begin{frame}{First Frame}
-    Hello, world!
-  \end{frame}
+\maketitle
+\section{Introduction to the Staggerd Quantum Walk}
+\begin{frame}{Staggerd Quantum Walk}
+	In contrast to conventional, coin-based quantum walks, which proceed straightforwardly from one vertex to another, the staggered variant takes advantage of forming partitions of graph cliques over the graph structure of the walking space.
+\end{frame}
+
+
+\section{Introduction to the ZX-Calculus}
+\begin{frame}{ZX-Calculus}
+	The ZX-calculus is diagrammatic language for reasoning about linear maps between qubits and, as such, about quantum computation in general.
+
+
+\end{frame}
+
+\begin{frame}{ZX-Calculus - Generators}
+	\tikzfig{zx-spiders}
+\end{frame}
+\begin{frame}{ZX-Calculus - Rewrite Rules}
+
+
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Spider Fusion
+			      \resizebox{0.4\textwidth}{!}{% 
+				      \tikzfig{rule-sf}
+			      }%
+			\item Identity Removal
+			      \resizebox{0.4\textwidth}{!}{% 
+				      \tikzfig{rule-id}
+			      }%
+			\item Color Change
+			      \resizebox{0.4\textwidth}{!}{% 
+				      \tikzfig{rule-colour-change}
+			      }%
+			\item Hadamard Identity
+			      \resizebox{0.4\textwidth}{!}{% 
+				      \tikzfig{rule-had-id}
+			      }%
+			\item Bialgebra
+			      \resizebox{0.4\textwidth}{!}{% 
+				      \tikzfig{rule-bialg}
+			      }%
+			\item $\pi$-commutation
+			      \resizebox{0.4\textwidth}{!}{% 
+				      \tikzfig{rule-pi-com}
+			      }%
+			\item Hopf
+			      \resizebox{0.4\textwidth}{!}{% 
+				      \tikzfig{rule-hopf}
+			      }%
+			\item State copy
+			      \resizebox{0.4\textwidth}{!}{% 
+				      \tikzfig{rule-state-copy}
+			      }%
+
+
+		\end{itemize}
+	\end{multicols}
+
+
+
+\end{frame}
+\section{Bringing ZX into the picture}
+
+\begin{frame}{Staggerd Quantum Walk - Circuit}
+	A general implementation of a Staggerd Quantum Walk for a line graph.
+
+	\ctikzfig{sqw-circuit}
+
+\end{frame}
+
+
+\begin{frame}{Staggerd Quantum Walk - ZX-diagram}
+	A concrete implementation of a Staggerd Quantum Walk for a line graph with 3 qubits and the state $\ket{4}$ as the initial state.
+
+	\ctikzfig{1-step-sqw}
+
+\end{frame}
+\begin{frame}{Staggerd Quantum Walk - ZX-diagram}
+	The previous diagram utilizes a notation from the ZH-calculus for the Tofolli gates that greatly simplifies the diagram. Expanding the Tofolli gates it yields
+	\begin{align*}
+		\resizebox{0.9\textwidth}{!}{% 
+			\tikzfig{1-step-expanded}
+		}%
+	\end{align*}
+\end{frame}
+\begin{frame}{Staggerd Quantum Walk - ZX-diagram}
+	\begin{align*}
+		\resizebox{0.9\textwidth}{!}{% 
+			\tikzfig{1-step-trivial}
+		}%
+	\end{align*}
+\end{frame}
+
 \end{document}
