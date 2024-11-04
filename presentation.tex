@@ -17,16 +17,31 @@
 
 \section{Introduction}
 \begin{frame}{Introduction}
-Optimization of quantum circuits can be seen as a \emph{reconfiguration} process. Indeed the interpretation of such circuits as ZX-diagrams provides a flexible description of quantum computations graphically.
+
+\begin{itemize}
+\item Optimization of quantum circuits can be seen as a \emph{reconfiguration} process. 
+\item Indeed the interpretation of such circuits as ZX-diagrams provides a flexible description of quantum computations graphically.
+\end{itemize}
+
+\begin{block}{Objective}
+Resort to the ZX-calculus to optimize a specific quantum walk.
+\end{block}
 \end{frame}
 
-\section{Introduction to the Staggered Quantum Walk}
-\begin{frame}{Staggered Quantum Walk}
+
+\section{Staggered Quantum Walks}
+\begin{frame}{Staggered Quantum Walks}
 	Thought of as the quantum counterpart to classical random walks, quantum walks provide an interesting technique in algorithmic design, with  applications in unstructured search, graph algorithmics and communication protocols.
+	
+	\begin{block}{Staggered Quantum Walks}
+	\begin{itemize}
+	\item The Staggered Quantum Walks is a recent and very general variant of discrete quantum walks 
+	\item It avoids the use of a coin to direct the walker evolution, exploring the underlying graph structure to build an evolution operator based on local unitaries induced by adjacent vertices.
+	\end{itemize}
+\end{block}
+	
 \end{frame}
-\begin{frame}{Staggered Quantum Walk}
-	The Staggered Quantum Walks is a recent and very general variant of discrete quantum walks which, avoiding the use of a coin to direct the walker evolution, explores the underlying graph structure to build an evolution operator based on local unitaries induced by adjacent vertices.
-\end{frame}
+
 
 \section{Introduction to the ZX-Calculus}
 \begin{frame}{ZX-Calculus}
@@ -84,7 +99,7 @@ Optimization of quantum circuits can be seen as a \emph{reconfiguration} process
 
 
 \end{frame}
-\section{Bringing ZX into the picture}
+\section{Optimizing Staggerd Quantum Walks with ZX}
 
 \begin{frame}{Staggerd Quantum Walk - Circuit}
 	A general implementation of a Staggered Quantum Walk for a line graph.
@@ -118,19 +133,31 @@ Optimization of quantum circuits can be seen as a \emph{reconfiguration} process
 
 \begin{frame}{Staggerd Quantum Walk - ZX-diagram}
 	Unfortunately this is the limit one can reasonably optimize the circuit by hand.
-
+	
 	This is where PyZX comes in.
 \end{frame}
 
 \section{PyZX}
 \begin{frame}{Automated Diagrammatic Rewriting - PyZX}
-	PyZX is a Python tool implementing the theory of ZX-calculus for the creation, visualization, and automated rewriting of large-scale quantum circuits.
+	PyZX is a Python tool implementing the theory of ZX-calculus. 
+	
+	\begin{block}{Capabilities}
+		\begin{itemize}
+			\item Creation
+			\item Visualization
+			\item Automated rewriting of large-scale quantum circuits
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}{Automated Diagrammatic Rewriting - PyZX}
-	Advanced techniques directly implemented in PyZX as the \texttt{full\_reduce} method, may reduce the circuit T-count in about $50\%$.
+	\begin{itemize}
+		\item The \texttt{full\_reduce} method implemented in PyZX may reduce the circuit T-count in about $50\%$
+	\end{itemize}
 	
-	However, the resulting diagram no longer resembles a circuit, making direct comparisons with the original one difficult.
+	\begin{block}{Consequece}
+		The resulting diagram no longer resembles a circuit, making direct comparisons with the original one difficult.
+	\end{block}
 \end{frame}
 
 \begin{frame}{Staggered Quantum Walk - Graph-like}
@@ -197,7 +224,13 @@ When analyzing the  ZX diagram for a long staggered quantum walk (i.e. with more
 	\end{align*}
 \end{frame}
 \begin{frame}{An alternative evolution operator - Rationale}	
-The rationale behind this operator is easy to explain: it creates a uniform distribution over a certain number of states, applies a rotation that makes some states more likely than others and then spreads these probabilities over the remaining states using CNOT gates. This also explains why the pattern only shows up in staggered quantum walks over a certain length. 
+	\begin{itemize}
+		\item Creates a uniform distribution over a certain number of states.
+		\item Applies a rotation that makes some states more likely than others.
+		\item Spreads these probabilities over the remaining states using CNOT gates.
+	\end{itemize}
+
+	This also explains why the pattern only shows up in staggered quantum walks over a certain length. 
 \end{frame}
 \begin{frame}{An alternative evolution operator - Advantages}	
 	\begin{itemize}
@@ -211,7 +244,11 @@ The rationale behind this operator is easy to explain: it creates a uniform dist
 \end{frame}
 
 \begin{frame}{An alternative evolution operator - Disadvantages}	
-However, a number of challenges remain, requiring further investigation. These concern the most suitable choice of parameters for $\alpha_n$ and $\beta_n$, as well as whether and how they depend on the number of qubits used in a particular staggered walk. 
+However, a number of challenges remain, requiring further investigation. 
+	\begin{itemize}
+		\item Most suitable choice of parameters for $\alpha_n$ and $\beta_n$.
+		\item Whether and how they depend on the number of qubits used in a particular staggered walk
+	\end{itemize}
 \end{frame}
 \begin{frame}{An alternative evolution operator - Example}	
 	\begin{align*}
@@ -221,14 +258,23 @@ However, a number of challenges remain, requiring further investigation. These c
 
 \section{Conclusions and future work}
 \begin{frame}{Conclusions}	
-	The original, 'intuitive' implementation of a staggered quantum walk can be heavily optimized with respect to both the total number of gates and the T-count value.
 	
-	It also lead to the identification of an alternative formulation of the evolution operator with a significant reduction in the number of gates involved and thus suitable for running on more limited quantum processing units.
+	The original, 'intuitive' implementation of a staggered quantum walk can be heavily optimized.
+	\begin{itemize}
+		\item Total number of gates
+		\item T-count value
+	\end{itemize}
 	
+	It also lead to the identification of an alternative formulation of the evolution operator.
+	\begin{itemize}
+		\item Significant reduction in the number of gates.
+		\item Suitable for running on more limited quantum processing units.
+	\end{itemize}
 \end{frame}
 \begin{frame}{Conclusions - (cont.)}	
-	This exercise regards algorithmic optimisation  in quantum programming  as a \emph{graph reconfiguration} process. This has a huge potential in the development of hybrid quantum-classical algorithms, which are the ones that can actually run in current quantum devices.
-	
-	They are essentially dynamic in the sense that, depending on a measurement carried over the quantum state, the quantum code running in the quantum device acting as a co-processor is transformed on-the-fly.
+	\begin{itemize}
+		\item This exercise regards algorithmic optimization  in quantum programming  as a \emph{graph reconfiguration} process. 
+		\item This has a huge potential in the development of hybrid quantum-classical algorithms, which are the ones that can actually run in current quantum devices.
+	\end{itemize}
 \end{frame}
 \end{document}
